@@ -1,10 +1,10 @@
-package com.xpf.backgroup;
+package com.xpf.background;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackgroupApplicationTests {
+class BackgroundApplicationTests {
 
     @Test
     void contextLoads() {

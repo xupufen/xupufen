@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "jwt.security.key",
+      "type": "java.lang.String",
+      "description": "Description for jwt.security.key."
+    },
+    {
+      "name": "jwt.security.expired",
+      "type": "java.lang.String",
+      "description": "Description for jwt.security.key."
+    },
+    {
+      "name": "project.name",
+      "type": "java.lang.String",
+      "description": "Description for jwt.security.key."
+    },
+    {
+      "name": "project.version",
+      "type": "java.lang.String",
+      "description": "Description for jwt.security.key."
+    },
+    {
+      "name": "project.upload",
+      "type": "java.lang.String",
+      "description": "Description for jwt.security.key."
+    }
+  ]
+}
