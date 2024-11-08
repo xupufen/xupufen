@@ -13,17 +13,17 @@
     {
       "name": "project.name",
       "type": "java.lang.String",
-      "description": "Description for jwt.security.key."
+      "description": "Description for project.name."
     },
     {
       "name": "project.version",
       "type": "java.lang.String",
-      "description": "Description for jwt.security.key."
+      "description": "Description for project.version."
     },
     {
       "name": "project.upload",
       "type": "java.lang.String",
-      "description": "Description for jwt.security.key."
+      "description": "Description for project.upload."
     }
   ]
 }

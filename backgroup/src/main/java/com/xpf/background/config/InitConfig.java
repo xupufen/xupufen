@@ -17,18 +17,19 @@ public class InitConfig {
     @Value("${project.upload}")
     private String upload;
 
+    /**
+     * 创建项目所需文件夹
+     */
     @PostConstruct
     public void initFileUrl() {
         File file = new File(upload);
+        File avatar = new File(upload + "avatar");
+        File f = new File(upload + "file");
         if (!file.exists()) {
             try {
-                if (file.mkdirs()) {
-                    log.info("项目文件夹创建成功");
-                } else {
-                    log.error("项目文件夹创建失败");
-                }
-            } catch (Exception e) {
-                log.error("项目文件夹创建失败: {}", e.getMessage(), e);
+                log.info("创建开始{}",file.mkdirs());
+            }catch (Exception e) {
+                log.error("项目文件夹创建失败{}",e.getMessage());
             }
         }
     }
