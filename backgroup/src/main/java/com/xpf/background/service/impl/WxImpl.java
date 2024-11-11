@@ -30,9 +30,6 @@ public class WxImpl implements Wx {
     /**
      * 生成token
      * 并且计入redis
-     * @param username
-     * @param password
-     * @return
      */
     @Override
     public Map<String ,Object> login(String username, String password) {
@@ -41,6 +38,7 @@ public class WxImpl implements Wx {
             String token;
             if (w != null) {
                 Map<String ,Object> map = new HashMap<>();
+                map.put("id",w.getId());
                 map.put("name",w.getName());
                 map.put("email",w.getEmail());
                 map.put("user",w.getUser());

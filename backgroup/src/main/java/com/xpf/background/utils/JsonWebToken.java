@@ -31,7 +31,7 @@ public class JsonWebToken {
      * 过期时间
      */
     @Value("${jwt.security.expired}")
-    private Long expired;
+    private int expired;
 
     @Autowired
     private TimeFormat t;
@@ -39,25 +39,27 @@ public class JsonWebToken {
     /**
      * 生成jwt
      */
-    public  String CreateToken(Map<String, Object> create) {
-       try{
-           Algorithm algorithm = Algorithm.HMAC256(key);
-           return JWT.create()
-                   .withIssuer("徐朴芬")
-                   .withIssuedAt(new Date())
-                   .withExpiresAt(Instant.ofEpochSecond(expired))
-                   .withClaim("name", String.valueOf(create.get("name")))
-                   .withClaim("email", String.valueOf(create.get("email")))
-                   .withClaim("user", String.valueOf(create.get("user")))
-                   .withClaim("role", String.valueOf(create.get("role")))
-                   .withClaim("id", String.valueOf(create.get("id")))
-                   .withClaim("loginTime",String.valueOf(create.get("loginTime")))
-                   .sign(algorithm);
-       }catch (Exception e){
-           log.error("生成失败!{}",e.getMessage());
-           return null;
-       }
+    public String CreateToken(Map<String, Object> create) {
+        try {
+            System.out.println(key);
+            Algorithm algorithm = Algorithm.HMAC256(key);
+            return JWT.create()
+                    .withIssuer("徐朴芬")
+                    .withIssuedAt(new Date())
+                    .withExpiresAt(Instant.ofEpochSecond(Instant.now().getEpochSecond()+expired))
+                    .withClaim("name", String.valueOf(create.get("name")))
+                    .withClaim("email", String.valueOf(create.get("email")))
+                    .withClaim("user", String.valueOf(create.get("user")))
+                    .withClaim("role", String.valueOf(create.get("role")))
+                    .withClaim("id", String.valueOf(create.get("id")))
+                    .withClaim("loginTime", t.formatToChinaTimeStringInstance(create.get("loginTime").toString()))
+                    .sign(algorithm);
+        } catch (Exception e) {
+            log.error("生成失败!{}", e.getMessage());
+            return null;
+        }
     }
+
 
     /**
      * 解析token

@@ -56,7 +56,7 @@ public class ProjectInterceptor implements HandlerInterceptor {
         if (m == null) {
             return sendErrorResponse(response, "无效的身份参数，禁止访问");
         } else {
-            if(r.isKey(m.get("token").toString())){
+            if(r.isKey(request.getHeader("Authorization"))){
                 return true;
             }else {
                 return sendErrorResponse(response,"身份验证失败,禁止访问系统资源");

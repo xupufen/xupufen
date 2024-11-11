@@ -37,7 +37,7 @@ jwt:
   security:
     key: abcdefghijklmnopqrstuvwxyz
     # 过期时间
-    expired: 86400000
+    expired: 36000
 
 # mybatis配置
 mybatis:
