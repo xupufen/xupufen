@@ -12,6 +12,10 @@ public class AddController {
     @Resource
     private addMapper add;
 
+    /**
+     * 获取所有地址
+     * 旅游地址
+     */
     @GetMapping(value = "/getAddress")
     public AjaxResource<?> address(){
         return AjaxResource.success(add.list());

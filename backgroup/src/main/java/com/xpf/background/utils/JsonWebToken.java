@@ -41,7 +41,6 @@ public class JsonWebToken {
      */
     public String CreateToken(Map<String, Object> create) {
         try {
-            System.out.println(key);
             Algorithm algorithm = Algorithm.HMAC256(key);
             return JWT.create()
                     .withIssuer("徐朴芬")
