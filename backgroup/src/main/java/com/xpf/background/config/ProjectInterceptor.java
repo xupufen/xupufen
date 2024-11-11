@@ -46,7 +46,7 @@ public class ProjectInterceptor implements HandlerInterceptor {
                 return r.isKey(request.getHeader("Authorization"));
             }
         }catch (Exception e){
-            log.error(e.getMessage());
+            log.error("请求拦截器处捕获错误: {}",e.getMessage());
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
             response.getWriter().write("""
