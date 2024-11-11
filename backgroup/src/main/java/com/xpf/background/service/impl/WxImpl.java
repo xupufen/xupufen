@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import com.xpf.background.utils.TimeFormat;
 
 @Service
 @Slf4j
@@ -48,7 +49,7 @@ public class WxImpl implements Wx {
                 token = jsonWebToken.CreateToken(map);
                 Map<String,Object> m = new HashMap<>();
                 m.put("token",token);
-                redisUtil.set("User:"+token,new Date());
+                redisUtil.set("User:"+token,TimeFormat.formatToChinaTimeString(new Date().toString()));
                 log.info("用户{}登录系统,登陆时间{}",w.getName(),new Date());
                 return m;
             }

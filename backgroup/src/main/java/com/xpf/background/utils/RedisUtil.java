@@ -42,9 +42,8 @@ public class RedisUtil {
     /**
      *存入键值对
      */
-    public boolean set(String key, Object value) {
+    public void set(String key, Object value) {
         redisTemplate.opsForValue().set(key, value);
-        return true;
     }
 
     /**
