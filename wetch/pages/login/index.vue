@@ -2,7 +2,7 @@
   <view class="app">
     <uv-toast ref="toast"/>
     <view class="video">
-      <image src="../../static/login.gif"/>
+      <image src="http://nlp.xupufen.top/login.gif"/>
     </view>
     <view class="title">
       <text>Hi</text>
