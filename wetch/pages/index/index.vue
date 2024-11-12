@@ -267,7 +267,7 @@ const toPage = (i) => {
       align-items: center;
 
       image {
-        border: 1px solid red;
+        //border: 1px solid red;
         width: 100%;
         height: 100%;
         border-radius: 8px;
