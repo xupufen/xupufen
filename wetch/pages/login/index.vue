@@ -2,13 +2,7 @@
   <view class="app">
     <uv-toast ref="toast"/>
     <view class="video">
-      <video
-          autoplay="true"
-          loop="true"
-          muted="true"
-          playsinline src="../../static/login.mp4"
-          controls="false"
-          style="pointer-events: none;"/>
+      <image src="../../static/login.gif"/>
     </view>
     <view class="title">
       <text>Hi</text>
@@ -88,7 +82,7 @@ const toLogin = async () => {
 .app {
   //border: 1px solid red;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -104,7 +98,7 @@ const toLogin = async () => {
     left: 0;
     overflow: hidden;
 
-    video {
+    image {
       //border: 1px solid red;
       width: 100%;
       height: 100%;

@@ -4,7 +4,7 @@
 export const request = {
     // 请求配置
     config: {
-        baseURL: 'http://localhost:8080',
+        baseURL: 'http://192.168.2.2:8080',
         header: {
             'Content-Type': 'application/json'
         },
