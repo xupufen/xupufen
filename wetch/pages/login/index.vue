@@ -1,5 +1,6 @@
 <template>
   <view class="app">
+    <uv-toast ref="toast"/>
     <view class="video">
       <video
           autoplay="true"
@@ -46,7 +47,7 @@ const login = ref({
 })
 
 const loginStatus = ref(true)
-const msg = ref('')
+const toast = ref('')
 
 const toLogin = async () => {
   const r = (await request.post('/login', {
@@ -55,13 +56,23 @@ const toLogin = async () => {
   })).data
 
   if (r.code !== 200) {
-    msg.value = r.msg
+    toast.value.show({
+      type: 'error',
+      icon: true,
+      title: '登陆失败!',
+      message: r.msg+'请检查账号或密码'
+    })
   } else {
-    msg.value = r.msg
+    toast.value.show({
+      type: 'success',
+      icon: true,
+      title: '登陆成功!',
+      message: r.msg+'欢迎进入系统'
+    })
     uni.redirectTo({
       url: '/pages/index/index'
     })
-    localStorage.setItem('token',r.data)
+    localStorage.setItem('token', r.data)
   }
 }
 </script>
