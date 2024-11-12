@@ -39,7 +39,7 @@
 
 <script setup>
 import {ref} from 'vue'
-import {request} from '../../api/request'
+import {request} from '@/api/request'
 
 const login = ref({
   user: '',
@@ -58,21 +58,28 @@ const toLogin = async () => {
   if (r.code !== 200) {
     toast.value.show({
       type: 'error',
-      icon: true,
-      title: '登陆失败!',
-      message: r.msg+'请检查账号或密码'
+      message: r.msg+'请检查账号或密码.....',
+      duration: 1500,
+      loading: true,
+      position: 'bottom'
     })
   } else {
+    localStorage.setItem('token', r.data)
     toast.value.show({
       type: 'success',
-      icon: true,
-      title: '登陆成功!',
-      message: r.msg+'欢迎进入系统'
+      message: r.msg+'正在进入系统.....',
+      duration: 1000,
+      position: 'bottom',
+      overlay: true,
+      loading: true,
+      complete(){
+        setTimeout(()=>{
+          uni.switchTab({
+            url: '/pages/index/index'
+          })
+        },500)
+      }
     })
-    uni.redirectTo({
-      url: '/pages/index/index'
-    })
-    localStorage.setItem('token', r.data)
   }
 }
 </script>
