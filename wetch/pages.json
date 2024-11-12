@@ -15,26 +15,30 @@
       }
     },
     {
-    	"path" : "pages/query/index",
-    	"style" : 
-    	{
-    		"navigationBarTitleText" : "搜索"
-    	}
+      "path": "pages/index/info/index",
+      "style": {
+        "navigationBarTitleText": "详情",
+        "enablePullDownRefresh": false
+      }
     },
-	{
-		"path" : "pages/msg/index",
-		"style" : 
-		{
-			"navigationBarTitleText" : "消息"
-		}
-	},
-	{
-		"path" : "pages/my/index",
-		"style" : 
-		{
-			"navigationBarTitleText" : "我的"
-		}
-	}
+    {
+      "path": "pages/query/index",
+      "style": {
+        "navigationBarTitleText": "搜索"
+      }
+    },
+    {
+      "path": "pages/msg/index",
+      "style": {
+        "navigationBarTitleText": "消息"
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -44,31 +48,34 @@
   },
   "uniIdRouter": {},
   "tabBar": {
-  	"list": [
-  		{
-  			"pagePath": "pages/index/index",
-  			"text": "首页",
-  			"iconPath": "static/svg/index.svg",
-  			"selectedIconPath": "static/svg/indexS.svg"
-  		},
-  		{
-  			"pagePath": "pages/query/index",
-  			"text": "发现",
-  			"iconPath": "static/svg/ss.svg",
-  			"selectedIconPath": "static/svg/ssS.svg"
-  		},
-		{
-			"pagePath": "pages/msg/index",
-			"text": "消息",
-			"iconPath": "static/svg/xx.svg",
-			"selectedIconPath": "static/svg/xxS.svg"
-		},
-		{
-			"pagePath": "pages/my/index",
-			"text": "我的",
-			"iconPath": "static/svg/wd.svg",
-			"selectedIconPath": "static/svg/wds.svg"
-		}
-  	]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/svg/index.svg",
+        "selectedIconPath": "static/svg/indexS.svg"
+      },
+      {
+        "pagePath": "pages/query/index",
+        "text": "发现",
+        "iconPath": "static/svg/ss.svg",
+        "selectedIconPath": "static/svg/ssS.svg"
+      },
+      {
+        "pagePath": "pages/msg/index",
+        "text": "消息",
+        "iconPath": "static/svg/xx.svg",
+        "selectedIconPath": "static/svg/xxS.svg"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "static/svg/wd.svg",
+        "selectedIconPath": "static/svg/wds.svg"
+      }
+    ],
+    "color": "",
+    "selectedColor": "",
+    "backgroundColor": ""
   }
 }
