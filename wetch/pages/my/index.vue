@@ -27,7 +27,7 @@
       </view>
 
       <view class="rr">
-
+        <text>我的足迹</text>
       </view>
     </view>
 
@@ -42,7 +42,9 @@
         </view>
       </view>
 
-      <view class="item" v-for="(item,index) in 20">
+      <view class="it">
+        <view class="item" v-for="(item,index) in 20">
+        </view>
 
       </view>
     </view>
@@ -66,13 +68,13 @@ import {ref} from 'vue'
   scrollbar-width: none;
 
 
-  .top{
+  .top {
     //border: 1px solid red;
     width: 100%;
     min-height: 120px;
     display: flex;
 
-    .avatar{
+    .avatar {
       //border: 1px solid red;
       width: 100px;
       height: 100%;
@@ -81,19 +83,20 @@ import {ref} from 'vue'
       align-items: center;
     }
 
-    .config{
+    .config {
       //border: 1px solid red;
       width: calc(100% - 100px);
       height: 100%;
       display: flex;
 
-      .l{
+      .l {
         //border: 1px solid red;
         width: 80%;
         height: 100%;
         display: flex;
         flex-direction: column;
-        .login{
+
+        .login {
           //border: 1px solid red;
           height: 50%;
           width: 100%;
@@ -103,7 +106,7 @@ import {ref} from 'vue'
           font-size: 18px;
         }
 
-        .i{
+        .i {
           //border: 1px solid red;
           height: 50%;
           width: 100%;
@@ -114,7 +117,7 @@ import {ref} from 'vue'
         }
       }
 
-      .c{
+      .c {
         //border: 1px solid red;
         width: 20%;
         height: 100%;
@@ -122,7 +125,7 @@ import {ref} from 'vue'
         justify-content: center;
         align-items: center;
 
-        .setting{
+        .setting {
           //border: 1px solid red;
           width: 20px;
           height: 20px;
@@ -132,7 +135,7 @@ import {ref} from 'vue'
     }
   }
 
-  .money{
+  .money {
     margin-top: 10px;
     //border: 1px solid red;
     width: 100%;
@@ -140,7 +143,7 @@ import {ref} from 'vue'
     display: flex;
     justify-content: space-between;
 
-    .host{
+    .host {
       //border: 1px solid red;
       width: 48%;
       display: flex;
@@ -150,16 +153,18 @@ import {ref} from 'vue'
       justify-content: center;
     }
 
-    .rr{
+    .rr {
       //border: 1px solid red;
       width: 48%;
       display: flex;
       border-radius: 6px;
       background: white;
+      align-items: center;
+      justify-content: center;
     }
   }
 
-  .my{
+  .my {
     //border: 1px solid red;
     width: 97%;
     min-height: 250px;
@@ -170,16 +175,16 @@ import {ref} from 'vue'
     border-radius: 6px;
   }
 
-  .love{
+  .love {
     //border: 1px solid red;
     width: 100%;
-    min-height: 1500px;
+    height: calc(100% - 450px);
     display: flex;
     box-sizing: border-box;
-    padding: 10px;
-    flex-wrap: wrap;
+    padding: 5px;
+    flex-direction: column;
 
-    .p{
+    .p {
       //border: 1px solid red;
       width: 100%;
       height: 50px;
@@ -187,13 +192,13 @@ import {ref} from 'vue'
       justify-content: space-between;
       align-items: center;
 
-      text{
+      text {
         font-size: 18px;
         font-weight: 550;
         color: rgb(51, 51, 51);
       }
 
-      .sx{
+      .sx {
         //border: 1px solid red;
         width: 100px;
         display: flex;
@@ -201,7 +206,7 @@ import {ref} from 'vue'
         align-items: center;
         height: 100%;
 
-        .icon{
+        .icon {
           //border: 1px solid red;
           width: 20px;
           height: 20px;
@@ -209,20 +214,30 @@ import {ref} from 'vue'
           background: white;
         }
 
-        text{
+        text {
           //border: 1px solid red;
           //margin-right: 5px;
         }
       }
     }
 
-    .item{
+    .it {
       //border: 1px solid red;
-      width: 47%;
-      height: 250px;
-      background: white;
-      border-radius: 5px;
-      margin: 10px 5px;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      flex-wrap: wrap;
+      overflow-y: scroll;
+      scrollbar-width: none;
+
+      .item{
+        //border: 1px solid red;
+        width: 47%;
+        height: 250px;
+        background: white;
+        border-radius: 5px;
+        margin: 10px 5px;
+      }
     }
   }
 }
