@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "百程旅游",
-  "usingComponents": {
-    "uv-toast": "../../uni_modules/uv-toast/components/uv-toast/uv-toast"
-  }
-}
