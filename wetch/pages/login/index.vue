@@ -64,7 +64,7 @@ const toLogin = async () => {
       position: 'bottom'
     })
   } else {
-    localStorage.setItem('token', r.data)
+    uni.setStorageSync('token',r.data)
     toast.value.show({
       type: 'success',
       message: r.msg+'正在进入系统.....',

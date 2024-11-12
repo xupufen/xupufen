@@ -18,7 +18,7 @@ export const request = {
     // 请求拦截器
     interceptors: {
         request: (config) => {
-            config.header.token = localStorage.getItem('token')
+            config.header.token = uni.getStorageSync('token')
             return config
         },
         response: (response) => {

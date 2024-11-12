@@ -41,7 +41,7 @@ const msg = ref([
 
 <style scoped lang="scss">
 .app {
-  height: calc(100vh - 45px - 50px);
+  height: calc(100vh);
   width: 100%;
   //border: 1px solid red;
   box-sizing: border-box;

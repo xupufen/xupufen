@@ -1,6 +1,7 @@
 <template>
   <view class="app">
     <view class="bj">
+      <image src="/static/index.jpg" class="b"/>
       <view class="obj">
         <view class="select">
           <input placeholder="搜索目的地/景点/省市"/>
@@ -147,7 +148,7 @@ const toPage = (i) => {
 .app {
   //border: 1px solid red;
   width: 100%;
-  height: calc(100vh - 45px - 50px);
+  height: calc(100vh);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -160,9 +161,19 @@ const toPage = (i) => {
     height: 280px;
     display: flex;
     flex-direction: column;
-    background: url("../../static/index.jpg");
+    //background: url("../../static/index.jpg");
     background-size: cover;
     z-index: 1;
+
+    .b{
+      //border: 1px solid red;
+      width: 100%;
+      height: 280px;
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
 
     .obj {
       display: flex;
@@ -171,6 +182,7 @@ const toPage = (i) => {
       width: 100%;
       //border: 1px solid red;
       height: 60px;
+      z-index: 2;
 
       .select {
         margin-top: 20px;

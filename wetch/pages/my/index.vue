@@ -59,7 +59,7 @@ import {ref} from 'vue'
 .app {
   //border: 1px solid red;
   box-sizing: border-box;
-  height: calc(100vh - 95px);
+  height: calc(100vh);
   display: flex;
   flex-direction: column;
   background: rgb(232, 235, 237);
