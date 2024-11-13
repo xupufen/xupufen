@@ -1,10 +1,11 @@
+import {url} from './BaseUrl'
 /**
  * 请求拦截器
  */
 export const request = {
     // 请求配置
     config: {
-        baseURL: 'http://192.168.2.2:8080',
+        baseURL: url,
         header: {
             'Content-Type': 'application/json'
         },
@@ -18,8 +19,10 @@ export const request = {
     // 请求拦截器
     interceptors: {
         request: (config) => {
-            config.header.token = uni.getStorageSync('token')
-            return config
+            if (config.url !== '/login' || config.url !== '/register') {
+                config.header.token = uni.getStorageSync('token')
+                return config
+            }
         },
         response: (response) => {
             if (response.statusCode > 1) {
