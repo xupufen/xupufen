@@ -6,7 +6,11 @@ import com.xpf.background.vo.LoginObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import static com.xpf.background.utils.AjaxResource.toAjax;
+
 @CrossOrigin(origins = "*")
 @RestController
 public class WxUser {
@@ -20,12 +24,18 @@ public class WxUser {
      * @return Map
      */
     @PostMapping(value = "/login")
-    public AjaxResource<?> login(@RequestBody LoginObject obj){
+    public Map<String,Object> login(@RequestBody LoginObject obj){
+        Map<String ,Object> map = new HashMap<>();
         if (obj != null){
-            Map<String,Object> m = w.login(obj.getUser(), obj.getPassword());
-            return m==null?AjaxResource.error("登陆失败!"):AjaxResource.success("登陆成功",m.get("token"));
+            map.put("code",200L);
+            map.put("msg","登陆成功");
+            map.put("data",w.login(obj.getUser(), obj.getPassword()));
+            map.put("token",w.login(obj.getUser(), obj.getPassword()).get("token"));
+            return toAjax(map);
         }
-        return AjaxResource.error("参数错误");
+        map.put("code",400);
+        map.put("msg","登陆失败!");
+        return toAjax(map);
     }
 
     /**
@@ -43,7 +53,7 @@ public class WxUser {
      * @param id
      * @return WxUser
      */
-    @GetMapping(value = "info")
+    @GetMapping(value = "/info")
     public AjaxResource<?> info(Integer id){
         return AjaxResource.success(w.getUser(id));
     }

@@ -2,12 +2,13 @@
   <view class="app">
     <view class="top">
       <view class="avatar">
-        <uv-avatar src="" size="60"/>
+        <uv-avatar :src="info.avatar" size="60"/>
       </view>
       <view class="config">
         <view class="l">
           <view class="login">
-            <text>登录/注册</text>
+            <text>{{info.name}}</text>
+            <text>{{info.role==='0'?'管理员':'旅游者'}}</text>
           </view>
           <view class="i">
             <text>相信美好,或许有一天,你所期待的会反过来拥抱你</text>
@@ -15,7 +16,7 @@
         </view>
         <view class="c">
           <view class="setting">
-            <image :src="set" />
+            <image :src="set"/>
           </view>
         </view>
       </view>
@@ -38,7 +39,7 @@
         <text>猜你喜欢</text>
         <view class="sx">
           <view class="icon">
-            <image :src="sx" />
+            <image :src="sx"/>
           </view>
           <text>换一批</text>
         </view>
@@ -54,9 +55,16 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 import set from '@/static/svg/set.svg'
 import sx from '@/static/svg/sx.svg'
+
+onMounted(async () => {
+  info.value = uni.getStorageSync('info')
+  console.log(info.value)
+})
+
+const info = ref({})
 </script>
 
 <style scoped lang="scss">
@@ -105,9 +113,14 @@ import sx from '@/static/svg/sx.svg'
           height: 50%;
           width: 100%;
           display: flex;
-          justify-content: flex-start;
+          justify-content: space-evenly;
           align-items: flex-end;
           font-size: 18px;
+
+          text{
+            //border: 1px solid red;
+            width: 50%;
+          }
         }
 
         .i {
@@ -134,7 +147,7 @@ import sx from '@/static/svg/sx.svg'
           width: 20px;
           height: 20px;
           //background: white;
-          image{
+          image {
             //border: 1px solid red;
             width: 100%;
             height: 100%;
@@ -187,7 +200,7 @@ import sx from '@/static/svg/sx.svg'
   .love {
     //border: 1px solid red;
     width: 100%;
-    height: calc(100% - 450px);
+    height: calc(100% - 300px);
     display: flex;
     box-sizing: border-box;
     padding: 5px;
@@ -211,7 +224,7 @@ import sx from '@/static/svg/sx.svg'
         //border: 1px solid red;
         width: 100px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
         height: 100%;
 
@@ -222,7 +235,7 @@ import sx from '@/static/svg/sx.svg'
           //margin-left: 5px;
           //background: white;
 
-          image{
+          image {
             width: 100%;
             height: 100%;
           }
@@ -244,7 +257,7 @@ import sx from '@/static/svg/sx.svg'
       overflow-y: scroll;
       scrollbar-width: none;
 
-      .item{
+      .item {
         //border: 1px solid red;
         width: 47%;
         height: 270px;

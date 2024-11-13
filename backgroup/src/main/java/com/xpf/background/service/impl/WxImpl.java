@@ -42,14 +42,13 @@ public class WxImpl implements Wx {
                 map.put("name",w.getName());
                 map.put("email",w.getEmail());
                 map.put("user",w.getUser());
+                map.put("avatar",w.getAvatar());
                 map.put("role",w.getRole());
                 map.put("loginTime",new Date());
-                token = jsonWebToken.CreateToken(map);
-                Map<String,Object> m = new HashMap<>();
-                m.put("token",token);
-                redisUtil.set(token,TimeFormat.formatToChinaTimeString(new Date().toString()));
+                map.put("token",jsonWebToken.CreateToken(map));
+                redisUtil.set(jsonWebToken.CreateToken(map),TimeFormat.formatToChinaTimeString(new Date().toString()));
                 log.info("用户: {}登录系统,登陆时间: {}",w.getName(),TimeFormat.formatToChinaTimeString(new Date().toString()));
-                return m;
+                return map;
             }
             log.error("用户{}登录失败!",username);
             return null;

@@ -64,6 +64,11 @@ public class AjaxResource<T>{
         return new AjaxResource<>(code, msg, data);
     }
 
+    public static <T> Map<String,Object> toAjax(Map<String,Object> m){
+        return m;
+    }
+
+
     public AjaxResource(Long code, String msg) {
         this.code = code;
         this.msg = msg;

@@ -34,6 +34,7 @@
 <script setup>
 import {ref} from 'vue'
 import {request} from '@/api/request'
+import {getInfo} from '@/api/user/index'
 
 const login = ref({
   user: '',
@@ -58,7 +59,8 @@ const toLogin = async () => {
       position: 'bottom'
     })
   } else {
-    uni.setStorageSync('token',r.data)
+    uni.setStorageSync('token',r.data.token)
+    uni.setStorageSync('info',r.data)
     toast.value.show({
       type: 'success',
       message: r.msg+'正在进入系统.....',

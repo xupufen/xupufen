@@ -28,12 +28,10 @@ public class InitConfig {
     @PostConstruct
     public void initFileUrl() {
         File file = new File(upload);
-        File avatar = new File(upload + "/avatar");
         File f = new File(upload + "/file");
-        if (!file.exists() || !avatar.exists() || !f.exists()) {
+        if (!file.exists() || !f.exists()) {
             try {
                 log.info("创建开始{}",file.mkdirs());
-                log.info("创建开始{}",avatar.mkdirs());
                 log.info("创建开始{}",f.mkdirs());
             }catch (Exception e) {
                 log.error("项目文件夹创建失败{}",e.getMessage());

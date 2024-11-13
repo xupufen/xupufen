@@ -13,6 +13,7 @@ unpackage/
 .settings
 .springBeans
 .sts4-cache
+.hbuilderx
 
 ### IntelliJ IDEA ###
 .idea

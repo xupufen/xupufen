@@ -63,7 +63,7 @@ const item = ref([
     icon: gn
   },
   {
-    name: '定制计划',
+    name: '旅游打卡',
     icon: jh
   },
   {

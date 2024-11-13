@@ -18,6 +18,6 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(projectInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login", "/register","/code");
+                .excludePathPatterns("/login", "/register","/code","/static/**");
     }
 }
