@@ -11,7 +11,7 @@
     </view>
 
     <view class="item">
-      <view class="i" v-for="(i,index) in item" :key="index">
+      <view class="i" v-for="(i,index) in item" :key="index" @click="to(index)">
         <image :src="i.icon"/>
         <text>{{ i.name }}</text>
       </view>
@@ -33,7 +33,7 @@
             <image :src="item.i"/>
           </view>
           <view class="info">
-            <text>{{item.msg}}</text>
+            <text>{{ item.msg }}</text>
           </view>
         </view>
       </view>
@@ -149,6 +149,14 @@ const toPage = (i) => {
     url: `/pages/index/info/index?data=${JSON.stringify(i)}`
   })
 }
+
+const to = async (i) => {
+  if (i ===2){
+    uni.navigateTo({
+      url: `/pages/index/page/punch`
+    })
+  }
+}
 </script>
 
 
@@ -173,7 +181,7 @@ const toPage = (i) => {
     background-size: cover;
     z-index: 1;
 
-    .b{
+    .b {
       //border: 1px solid red;
       width: 100%;
       height: 280px;

@@ -27,6 +27,11 @@
         <input placeholder="请输入您的密码" v-model="login.password"/>
       </view>
       <view class="btn" @click="toLogin">登录</view>
+
+      <view class="select">
+        <view class="code">验证码登录</view>
+        <view class="forget">忘记密码?</view>
+      </view>
     </view>
   </view>
 </template>
@@ -233,6 +238,31 @@ const toLogin = async () => {
       font-size: 26px;
       background: rgb(5, 78, 230);
       color: white;
+    }
+
+    .select{
+      //border: 1px solid red;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .code{
+      //border: 1px solid red;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+    }
+
+    .forget{
+      //border: 1px solid red;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
     }
   }
 }
