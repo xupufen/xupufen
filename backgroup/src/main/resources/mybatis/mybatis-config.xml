@@ -15,7 +15,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis/mapper/WxLoginMapper.xml"/>
+        <mapper resource="mybatis/mapper/WxInfo.xml"/>
         <mapper resource="mybatis/mapper/initMapper.xml"/>
         <mapper resource="mybatis/mapper/addMapper.xml"/>
     </mappers>

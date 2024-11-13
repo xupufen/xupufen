@@ -16,6 +16,10 @@ public class AjaxResource<T>{
     private String msg;
     private T data;
 
+    public static <T> AjaxResource<?> success() {
+        return new AjaxResource<>(200L,"操作成功!",null);
+    }
+
     public static <T> AjaxResource<?> success(String msg) {
         return new AjaxResource<>(200L,msg,null);
     }
@@ -34,6 +38,10 @@ public class AjaxResource<T>{
 
     public static <T> AjaxResource<?> success(Long code, String msg, T data) {
         return new AjaxResource<>(code, msg, data);
+    }
+
+    public static <T> AjaxResource<?> error() {
+        return new AjaxResource<>(500L,"操作成功!",null);
     }
 
     public static <T> AjaxResource<?> error(String msg) {

@@ -15,7 +15,7 @@
         </view>
         <view class="c">
           <view class="setting">
-
+            <image :src="set" />
           </view>
         </view>
       </view>
@@ -37,7 +37,9 @@
       <view class="p">
         <text>猜你喜欢</text>
         <view class="sx">
-          <view class="icon"></view>
+          <view class="icon">
+            <image :src="sx" />
+          </view>
           <text>换一批</text>
         </view>
       </view>
@@ -53,6 +55,8 @@
 
 <script setup>
 import {ref} from 'vue'
+import set from '@/static/svg/set.svg'
+import sx from '@/static/svg/sx.svg'
 </script>
 
 <style scoped lang="scss">
@@ -129,7 +133,12 @@ import {ref} from 'vue'
           //border: 1px solid red;
           width: 20px;
           height: 20px;
-          background: white;
+          //background: white;
+          image{
+            //border: 1px solid red;
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
@@ -141,7 +150,7 @@ import {ref} from 'vue'
     width: 100%;
     min-height: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     .host {
       //border: 1px solid red;
@@ -167,7 +176,7 @@ import {ref} from 'vue'
   .my {
     //border: 1px solid red;
     width: 97%;
-    min-height: 250px;
+    min-height: 150px;
     margin-top: 5px;
     display: flex;
     flex-wrap: wrap;
@@ -211,7 +220,12 @@ import {ref} from 'vue'
           width: 20px;
           height: 20px;
           //margin-left: 5px;
-          background: white;
+          //background: white;
+
+          image{
+            width: 100%;
+            height: 100%;
+          }
         }
 
         text {
@@ -224,7 +238,7 @@ import {ref} from 'vue'
     .it {
       //border: 1px solid red;
       width: 100%;
-      height: 300px;
+      height: 350px;
       display: flex;
       flex-wrap: wrap;
       overflow-y: scroll;
@@ -233,7 +247,7 @@ import {ref} from 'vue'
       .item{
         //border: 1px solid red;
         width: 47%;
-        height: 250px;
+        height: 270px;
         background: white;
         border-radius: 5px;
         margin: 10px 5px;

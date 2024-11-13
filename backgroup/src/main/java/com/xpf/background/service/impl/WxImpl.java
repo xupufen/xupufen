@@ -1,7 +1,7 @@
 package com.xpf.background.service.impl;
 
 import com.xpf.background.domain.WxUser;
-import com.xpf.background.mapper.WxLogin;
+import com.xpf.background.mapper.WxInfo;
 import com.xpf.background.service.Wx;
 import com.xpf.background.utils.JsonWebToken;
 import com.xpf.background.utils.RedisUtil;
@@ -19,7 +19,7 @@ import com.xpf.background.utils.TimeFormat;
 public class WxImpl implements Wx {
 
     @Autowired
-    private WxLogin wxLogin;
+    private WxInfo wxInfo;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -34,7 +34,7 @@ public class WxImpl implements Wx {
     @Override
     public Map<String ,Object> login(String username, String password) {
         try {
-            WxUser w = wxLogin.login(username,password);
+            WxUser w = wxInfo.login(username,password);
             String token;
             if (w != null) {
                 Map<String ,Object> map = new HashMap<>();
@@ -57,5 +57,15 @@ public class WxImpl implements Wx {
             log.error("错误原因{}",e.getMessage());
             return null;
         }
+    }
+
+    @Override
+    public WxUser getUser(Integer id) {
+        return wxInfo.getUser(id);
+    }
+
+    @Override
+    public boolean register(WxUser user) {
+        return wxInfo.userRegister(user);
     }
 }

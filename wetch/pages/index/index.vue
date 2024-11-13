@@ -11,9 +11,9 @@
     </view>
 
     <view class="item">
-      <view class="i" v-for="(item,index) in item" :key="index">
-        <image :src="item.icon"/>
-        <text>{{ item.name }}</text>
+      <view class="i" v-for="(i,index) in item" :key="index">
+        <image :src="i.icon"/>
+        <text>{{ i.name }}</text>
       </view>
     </view>
 
@@ -44,39 +44,47 @@
 <script setup>
 import {ref} from 'vue'
 import test from '/static/image/test.png'
+import gz from '@/static/index/gz.svg'
+import gn from '@/static/index/gn.svg'
+import jh from '@/static/index/jh.svg'
+import wl from '@/static/index/wl.svg'
+import jt from '@/static/index/jt.svg'
+import mp from '@/static/index/mp.svg'
+import cx from '@/static/index/cx.svg'
+import jd from '@/static/index/jd.svg'
 
 const item = ref([
   {
     name: '贵州省专区',
-    icon: ''
+    icon: gz
   },
   {
     name: '国内省市',
-    icon: ''
+    icon: gn
   },
   {
     name: '定制计划',
-    icon: ''
+    icon: jh
   },
   {
     name: '文旅中心',
-    icon: ''
+    icon: wl
   },
   {
     name: '交通工具',
-    icon: ''
+    icon: jt
   },
   {
     name: '门票',
-    icon: ''
+    icon: mp
   },
   {
     name: '自由出行',
-    icon: ''
+    icon: cx
   },
   {
     name: '酒店',
-    icon: ''
+    icon: jd
   }
 ])
 
@@ -244,10 +252,13 @@ const toPage = (i) => {
       align-items: center;
 
       image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         //border: 1px solid red;
         width: 45px;
         height: 45px;
-        background: blue;
+        //background: blue;
         clip-path: circle(50% at 50% 50%);
       }
 

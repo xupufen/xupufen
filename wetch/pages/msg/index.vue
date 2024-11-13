@@ -2,7 +2,7 @@
   <view class="app">
     <view class="obj" v-for="(item,index) in msg" :key="index">
       <view class="l">
-        <image src="/static/image/test.png"/>
+        <image :src="item.icon"/>
       </view>
       <view class="r">
         <view class="title">
@@ -18,23 +18,32 @@
 
 <script setup>
 import {ref} from 'vue'
+import xx from '@/static/svg/msg.svg'
+import dd from '@/static/svg/dd.svg'
+import gl from '@/static/svg/gl.svg'
+import system from '@/static/svg/system.svg'
+
 
 const msg = ref([
   {
     title: '在线咨询',
-    info: '暂时没消息'
+    info: '我的订单',
+    icon: xx
   },
   {
-    title: '在线咨询',
-    info: '暂时没消息'
+    title: '我的订单',
+    info: '暂时没消息',
+    icon: dd
   },
   {
-    title: '在线咨询',
-    info: '暂时没消息'
+    title: '旅游攻略',
+    info: '暂时没消息',
+    icon: gl
   },
   {
-    title: '在线咨询',
-    info: '暂时没消息'
+    title: '系统消息',
+    info: '暂时没消息',
+    icon: system
   }
 ])
 </script>

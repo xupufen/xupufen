@@ -46,6 +46,8 @@ public class WxUser {
 
     /**
      * 角色
+     * 0 管理员
+     * 1 普通用户
      */
     private String role;
 
