@@ -4,6 +4,7 @@ import com.xpf.background.utils.AjaxResource;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 文件上传下载
@@ -33,35 +41,44 @@ public class FileSystem {
             return AjaxResource.error("文件不为空!");
         }
 
-        file.transferTo(new File(upload+"/"+file.getOriginalFilename()));
-        return AjaxResource.success("文件上传成功!",upload+"/"+file.getOriginalFilename());
+        file.transferTo(new File(upload+"/file/"+file.getOriginalFilename()));
+        return AjaxResource.success("文件上传成功!",upload+"/file/"+file.getOriginalFilename());
     }
 
     /**
      * 通用文件下载
      */
+    @GetMapping(value = "/fileDownload")
     @PostMapping(value = "/fileDownload")
     public void fileDownload(HttpServletResponse response, String fileUrl) throws IOException {
         File file = new File(fileUrl);
         if (!file.exists()) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             response.setContentType("application/json;charset=utf-8");
-            response.getWriter().write("{\"code\": 500, \"msg\": \"文件不存在\"}");
+            response.getWriter().write("{\"code\": 404, \"msg\": \"文件不存在\"}");
             return;
         }
 
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-Length", String.valueOf(file.length()));
+        Path path = file.toPath();
+        String mimeType = Files.probeContentType(path);
+        if (mimeType == null) {
+            mimeType = "application/octet-stream";
+        }
+        response.setContentType(mimeType);
 
-        try (ServletOutputStream out = response.getOutputStream();
-             FileInputStream fis = new FileInputStream(file)) {
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = fis.read(buffer)) != -1) {
-                out.write(buffer, 0, bytesRead);
-            }
+        String fileName = file.getName();
+        String encodedFileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8)
+                .replaceAll("\\+", "%20");
+        String contentDisposition = String.format("inline; filename=\"%s\"; filename*=UTF-8''%s",
+                fileName, encodedFileName);
+        response.setHeader("Content-Disposition", contentDisposition);
+
+        try (OutputStream out = response.getOutputStream()) {
+            Files.copy(path, out);
         } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.setContentType("application/json;charset=utf-8");
-            response.getWriter().write("\"code\": \"500,\" msg:\" " + e.getMessage());
+            response.getWriter().write("{\"code\": 500, \"msg\": \"" + e.getMessage() + "\"}");
         }
     }
 
