@@ -49,8 +49,16 @@ public class FileSystem {
      * 通用文件下载
      */
     @GetMapping(value = "/fileDownload")
-    @PostMapping(value = "/fileDownload")
     public void fileDownload(HttpServletResponse response, String fileUrl) throws IOException {
+        fileUtils(response, fileUrl);
+    }
+
+    @PostMapping(value = "/fileDownload")
+    public void fileDownloadPost(HttpServletResponse response, String fileUrl) throws IOException {
+        fileUtils(response, fileUrl);
+    }
+
+    private void fileUtils(HttpServletResponse response, String fileUrl) throws IOException {
         File file = new File(fileUrl);
         if (!file.exists()) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
