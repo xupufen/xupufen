@@ -35,7 +35,6 @@ public class WxImpl implements Wx {
     public Map<String ,Object> login(String username, String password) {
         try {
             WxUser w = wxInfo.login(username,password);
-            String token;
             if (w != null) {
                 Map<String ,Object> map = new HashMap<>();
                 map.put("id",w.getId());
