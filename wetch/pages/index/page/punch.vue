@@ -25,7 +25,8 @@
           <text>当前位置: 贵阳市观山湖区</text>
         </view>
         <view class="right">
-          <text>当前时间: {{dateFormat(new Date())}}</text>
+          <text>当前时间:</text>
+          <text style="color: rgba(1,150,252,0.85)">{{ time }}</text>
         </view>
       </view>
       <view class="bottom">
@@ -48,9 +49,18 @@ import {dateFormat} from '@/utils'
 
 onMounted(async () => {
   info.value = uni.getStorageSync('info')
+  getTime()
 })
 
 const info = ref({})
+
+const time = ref()
+
+const getTime = () => {
+  setInterval(() => {
+    time.value = dateFormat(new Date())
+  }, 1000)
+}
 </script>
 
 <style scoped lang="scss">
@@ -187,18 +197,26 @@ const info = ref({})
       }
 
       .right {
+        //border: 1px solid red;
         width: 48%;
         height: 100%;
         background: rgba(211, 203, 203, 0.56);
         border-radius: 8px;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         color: white;
+        flex-direction: column;
 
         text {
-          margin-left: 15px;
+          //margin-left: 15px;
           font-size: 14px;
+          //border: 1px solid red;
+          width: 100%;
+          margin: 8px 0 0 15px;
+          display: flex;
+          //justify-content: center;
+          align-items: center;
         }
       }
     }

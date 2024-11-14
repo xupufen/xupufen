@@ -24,7 +24,7 @@
         <input placeholder="请输入您的账号" v-model="login.user"/>
       </view>
       <view class="pwd">
-        <input placeholder="请输入您的密码" v-model="login.password"/>
+        <input placeholder="请输入您的密码" v-model="login.password" type="password"/>
       </view>
       <view class="btn" @click="toLogin">登录</view>
 
@@ -54,6 +54,16 @@ const toLogin = async () => {
     'user': login.value.user,
     'password': login.value.password
   })).data
+
+  if(!r){
+    toast.value.show({
+      type: 'error',
+      message: '网络异常.....',
+      duration: 1500,
+      loading: true,
+      position: 'top'
+    })
+  }
 
   if (r.code !== 200) {
     toast.value.show({

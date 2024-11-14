@@ -151,10 +151,32 @@ const toPage = (i) => {
 }
 
 const to = async (i) => {
-  if (i ===2){
-    uni.navigateTo({
-      url: `/pages/index/page/punch`
-    })
+  switch (i) {
+    case 0:
+      uni.navigateTo({
+        url: `/pages/index/page/guizhou`
+      })
+      break
+    case 1:
+      uni.navigateTo({
+        url: `/pages/index/page/chain`
+      })
+      break
+    case 2:
+      uni.navigateTo({
+        url: `/pages/index/page/punch`
+      })
+      break
+    case 3:
+      uni.navigateTo({
+        url: `/pages/index/page/wl`
+      })
+      break
+    case 4:
+      uni.navigateTo({
+        url: `/pages/index/page/jt`
+      })
+      break
   }
 }
 </script>

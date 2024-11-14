@@ -2,7 +2,7 @@
  * 是否登录
  */
 export const isLogin=()=>{
-    return localStorage.getItem('token')!=null && localStorage.getItem('token')!==undefined;
+    return uni.getStorageSync('token')!=null && uni.getStorageSync('token')!==undefined;
 }
 
 /**

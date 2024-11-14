@@ -20,7 +20,7 @@ export const request = {
     interceptors: {
         request: (config) => {
             if (config.url !== '/login' || config.url !== '/register') {
-                config.header.token = uni.getStorageSync('token')
+                config.header.Authorization = uni.getStorageSync('token')
                 return config
             }
         },

@@ -45,6 +45,34 @@
       "style": {
         "navigationBarTitleText": "我的"
       }
+    },
+    {
+      "path": "pages/index/page/guizhou",
+      "style": {
+        "navigationBarTitleText": "贵州省专区",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/index/page/chain",
+      "style": {
+        "navigationBarTitleText": "国内省市",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/index/page/wl",
+      "style": {
+        "navigationBarTitleText": "文旅中心",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/index/page/jt",
+      "style": {
+        "navigationBarTitleText": "交通工具",
+        "enablePullDownRefresh": false
+      }
     }
   ],
   "globalStyle": {
