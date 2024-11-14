@@ -36,7 +36,7 @@ const city = ref()
 const getInfo = (i) => {
   for (const item of data.value){
     if (i.address === item.address){
-      city.value = eval(i.city)
+      city.value = JSON.parse(i.city.match(/\[.*\]/)[0])
     }
   }
 }
