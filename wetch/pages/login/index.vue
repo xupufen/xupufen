@@ -75,7 +75,7 @@ const toLogin = async () => {
     })
   } else {
     uni.setStorageSync('token',r.data.token)
-    uni.setStorageSync('info',r.data)
+    uni.setStorageSync('info',r.data.info)
     toast.value.show({
       type: 'success',
       message: r.msg+'正在进入系统.....',
