@@ -31,8 +31,12 @@
       </view>
       <view class="bottom">
         <view class="item">
-          <view class="ra">
-            <text>开始打卡 !</text>
+          <view class="ra" @click="setPunch">
+            <text>点击开始打卡 !</text>
+            <view class="dw">
+              <text v-if="address.latitude">经: {{ address.latitude }}</text>
+              <text v-if="address.longitude">纬: {{ address.longitude }}</text>
+            </view>
           </view>
           <view class="text">
             <text>旅途风光无限,点击开始记录您的美好生活</text>
@@ -56,10 +60,25 @@ const info = ref({})
 
 const time = ref()
 
+const address = ref('')
+
 const getTime = () => {
   setInterval(() => {
     time.value = dateFormat(new Date())
   }, 1000)
+}
+
+const setPunch = () => {
+  if (navigator.geolocation) {
+    setInterval(()=>{
+      navigator.geolocation.getCurrentPosition((i) => {
+        navigator.vibrate(800)
+        address.value = i.coords
+      }, (e) => {
+        address.value = e.message
+      })
+    },500)
+  }
 }
 </script>
 
@@ -249,6 +268,21 @@ const getTime = () => {
           justify-content: center;
           align-items: center;
           color: white;
+          flex-direction: column;
+
+          .dw {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            //border: 1px solid red;
+            width: 80%;
+            height: 50px;
+            flex-wrap: wrap;
+            overflow-y: scroll;
+            font-size: 12px;
+            text-align: center;
+            flex-direction: column;
+          }
         }
 
         .text {

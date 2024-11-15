@@ -37,12 +37,7 @@ public class WxImpl implements Wx {
             WxUser w = wxInfo.login(username,password);
             if (w != null) {
                 Map<String ,Object> map = new HashMap<>();
-                map.put("id",w.getId());
-                map.put("name",w.getName());
-                map.put("email",w.getEmail());
-                map.put("user",w.getUser());
-                map.put("avatar",w.getAvatar());
-                map.put("role",w.getRole());
+                map.put("info",w);
                 map.put("loginTime",new Date());
                 map.put("token",jsonWebToken.CreateToken(map));
                 redisUtil.set(jsonWebToken.CreateToken(map),TimeFormat.formatToChinaTimeString(new Date().toString()));

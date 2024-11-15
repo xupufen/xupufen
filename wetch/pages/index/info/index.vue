@@ -11,8 +11,9 @@
 
     </view>
     <view class="bottom">
-      <view class="l">
+      <view class="l" @click="setStatus">
         <text>加入收藏</text>
+        <image :src="status" />
       </view>
 
       <view class="btn">
@@ -28,6 +29,8 @@
 <script setup>
 import {onLoad} from '@dcloudio/uni-app'
 import {ref} from 'vue'
+import sc from '@/static/svg/sc.svg'
+import ysc from '@/static/svg/ysc.svg'
 
 onLoad((option) => {
   data.value = JSON.parse(option.data)
@@ -35,6 +38,16 @@ onLoad((option) => {
 })
 
 const data = ref()
+
+const status = ref(sc)
+
+const setStatus = ()=>{
+  if (status.value === sc){
+    status.value = ysc
+  }else {
+    status.value = sc
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -91,16 +104,22 @@ const data = ref()
 
     .l{
       //border: 1px solid red;
-      width: 80px;
+      width: 120px;
       display: flex;
       height: 100%;
-      justify-content: center;
+      justify-content: space-evenly;
       align-items: center;
+
+      image{
+        //border: 1px solid red;
+        height: 20px;
+        width: 20px;
+      }
     }
 
     .btn{
       //border: 1px solid red;
-      width: calc(100% - 100px);
+      width: calc(100% - 120px);
       height: 100%;
       display: flex;
       justify-content: center;

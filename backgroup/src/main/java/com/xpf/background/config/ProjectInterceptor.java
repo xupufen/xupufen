@@ -29,6 +29,7 @@ public class ProjectInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
         try {
+            log.info("url: {} method: {}",request.getRequestURI(), request.getMethod());
             if (handler instanceof HandlerMethod handlerMethod) {
                 Method method = handlerMethod.getMethod();
                 Anonymity anonymity = method.getAnnotation(Anonymity.class);

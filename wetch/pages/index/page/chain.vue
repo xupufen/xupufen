@@ -100,6 +100,7 @@ const getInfo = (i) => {
 
       .sq{
         //border: 1px solid red;
+        font-size: 12px;
         width: 48%;
         height: 100%;
         display: flex;
@@ -111,6 +112,7 @@ const getInfo = (i) => {
 
       .zx{
         //border: 1px solid red;
+        font-size: 12px;
         width: 48%;
         height: 100%;
         display: flex;
